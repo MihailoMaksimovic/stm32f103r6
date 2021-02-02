@@ -1,0 +1,33 @@
+Step-by-step instructions for setting up Eclipse for STM32CubeMX generated projects:
+
+Eclipse
+	->Windows
+		->Preferences
+			->MCU
+				->Workspace ARM Toolchains Paths
+					->Toolchain folder(Set "%extractionPath%\GNU MCU Eclipse\ARM Embedded GCC\8.3.1-1.1\bin")
+					->Default toolchain(Choose "GNU MCU Eclipse ARM Embedded GCC")
+				->Workspace Build Tools Path
+					->Build Tools folder(Set "%extractionPath%\GNU MCU Eclipse\Build Tools\2.12-20190422-1053\bin")
+	->File
+		->Import...
+			->C/C++ (Existing Code as Makefile project)
+				->Toolchain for Indexer Settings (Choose "ARM Cross GCC")
+	->Project
+		->Properties
+			->C/C++ Build
+				->Settings
+					->Toolchains
+						->Check whether Name is set to correct value ("GNU MCU Eclipse ARM Embedded GCC (arm-none-eabi-gcc)")
+						->Check whether Toolchain path is set to correct value ("%extractionPath%\GNU MCU Eclipse\ARM Embedded GCC\8.3.1-1.1\bin")
+						->Check whether Build tools path is set to correct value ("%extractionPath%\GNU MCU Eclipse\Build Tools\2.12-20190422-1053\bin")
+						->Select Apply and close because explicit apply may be needed for Eclipse's Indexer to get necessary include informations from the Toolchain
+	->Project
+		->Properties
+			->C/C++ General
+				->Paths and symbols
+					->Symbols
+						->GNU C
+							->Add symbol with name "USE_HAL_DRIVER" (value does not matter)
+							->Add symbol with name "STM32F103x6" (value does not matter)
+	
